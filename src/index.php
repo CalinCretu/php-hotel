@@ -48,31 +48,30 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+
 ?>
 
   <div class="container-sm text-center my-5 py-5">
   <table class="table text-start">
-    <?php
-  foreach ($hotels as $key => $value){
-          // var_dump($key, $value['name']);
-          $name = $value['name'];
-          $desc = $value['description'];
-          $parking = $value['parking'] ? 'Si' : 'No';
-          $vote = $value['vote'];
-          $distance = $value['distance_to_center'];
-          ?>
-          <tbody>
-            <tr>
-              <td><?php echo $name ?></td>
-              <td><?php echo $desc ?></td>
-              <td class="text-center"><?php echo $parking ?></td>
-              <td class="text-center"><?php echo $vote ?></td>
-              <td class="text-center"><?php echo $distance ?> km</td>
-            </tr>
-          </tbody>
-          <?php
-        };
-        ?>
+    <?php foreach ($hotels as $hotel) { ?>
+      <tbody>
+        <tr>
+          <td><?php echo $hotel['name'] ?></td>
+          <td><?php echo $hotel['description'] ?></td>
+          <td class="text-center">
+            <?php
+              if($hotel['parking'] === true) {
+                echo 'Sì';
+              } else {
+                echo 'No';
+              }
+            ?>
+          </td>
+          <td class="text-center"><?php echo $hotel['vote'] ?></td>
+          <td class="text-center"><?php echo $hotel['distance_to_center'] ?> km</td>
+        </tr>
+      </tbody>
+    <?php } ?>
   <thead>
     <tr>
       <th scope="col">Nome</th>
