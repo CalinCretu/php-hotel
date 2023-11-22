@@ -51,26 +51,41 @@ $hotels = [
 ?>
 
   <div class="container-sm text-center my-5 py-5">
-    <table class="table">
-      <thead>
-        Hotels
-      </thead>
-      <tbody>
-        <?php 
-        foreach ($hotels as $key => $value){
-          var_dump($key, $value['name']);
+  <table class="table text-start">
+    <?php
+  foreach ($hotels as $key => $value){
+          // var_dump($key, $value['name']);
           $name = $value['name'];
+          $desc = $value['description'];
+          $parking = $value['parking'] ? 'Si' : 'No';
+          $vote = $value['vote'];
+          $distance = $value['distance_to_center'];
           ?>
-          <tr>
-          <th scope="col"><?php echo $name ?></th>
-          </tr>
+          <tbody>
+            <tr>
+              <td><?php echo $name ?></td>
+              <td><?php echo $desc ?></td>
+              <td class="text-center"><?php echo $parking ?></td>
+              <td class="text-center"><?php echo $vote ?></td>
+              <td class="text-center"><?php echo $distance ?> km</td>
+            </tr>
+          </tbody>
           <?php
         };
         ?>
-      </tbody>
-    </table>
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Parcheggio</th>
+      <th scope="col">Valutazione</th>
+      <th scope="col">Distanza dal centro</th>
+    </tr>
+  </thead>
+</table>
   </div>
 
 </body>
 
 </html>
+
